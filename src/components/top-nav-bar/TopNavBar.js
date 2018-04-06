@@ -9,7 +9,7 @@ import {
 } from "reactstrap";
 import { Link } from "react-router-dom";
 
-export default class Example extends React.Component {
+class TopNavBar extends React.Component {
   constructor(props) {
     super(props);
 
@@ -36,9 +36,16 @@ export default class Example extends React.Component {
             <NavItem>
               <Link to="signin">Sign in</Link>
             </NavItem>
+            <NavItem>
+              <Link to="/" onClick={() => sessionStorage.removeItem("token")}>
+                Sign out
+              </Link>
+            </NavItem>
           </Nav>
         </Collapse>
       </Navbar>
     );
   }
 }
+
+export default TopNavBar;
