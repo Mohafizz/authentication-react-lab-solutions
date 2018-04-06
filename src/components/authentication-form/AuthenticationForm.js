@@ -1,5 +1,7 @@
 import React, { Component } from "react";
 import { Form, FormGroup, Label, Input, Button } from "reactstrap";
+import { Redirect } from "react-router-dom";
+import { isAuthenticated } from "../../utils/AuthService";
 import "./AuthenticationForm.css";
 
 class AuthenticationForm extends Component {
@@ -12,7 +14,7 @@ class AuthenticationForm extends Component {
   }
 
   render() {
-    return (
+    const authenticationForm = (
       <div className="authentication-form">
         <h2>{this.props.title}</h2>
         <Form onSubmit={this.handleSubmit.bind(this)}>
@@ -41,6 +43,8 @@ class AuthenticationForm extends Component {
         </Form>
       </div>
     );
+
+    return !isAuthenticated() ? authenticationForm : <Redirect to="/" />;
   }
 
   handleEmailChange(event) {
@@ -73,7 +77,7 @@ class AuthenticationForm extends Component {
         body: JSON.stringify(body)
       }
     )
-      .then(data => data.json())
+      .then(response => response.json())
       .then(data => {
         sessionStorage.setItem("token", data.user.token);
         this.props.history.push("/");

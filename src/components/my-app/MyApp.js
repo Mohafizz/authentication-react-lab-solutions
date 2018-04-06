@@ -1,21 +1,17 @@
 import React, { Component } from "react";
 import { Route } from "react-router-dom";
-import AuthenticationForm from "./AuthenticationForm";
-import NavBar from "./NavBar";
-import PrivilegedComponent from "./PrivilegedComponent";
-import PrivateRoute from "./PrivateRoute";
+import AuthenticationForm from "../authentication-form/AuthenticationForm";
+import TopNavBar from "../top-nav-bar/TopNavBar";
+import WelcomeComponent from "../welcome-component/WelcomeComponent";
+import PrivateRoute from "../private-route/PrivateRoute";
 
 class MyApp extends Component {
   render() {
     return (
       <div>
-        <NavBar />
+        <TopNavBar />
         <br />
-        <Route
-          exact
-          path="/"
-          render={() => <h1>Welcome to My React App.</h1>}
-        />
+        <Route exact path="/" component={WelcomeComponent} />
         <Route
           path="/signup"
           render={props => (
@@ -37,7 +33,6 @@ class MyApp extends Component {
           )}
         />
 
-        <PrivilegedComponent />
         <PrivateRoute />
       </div>
     );

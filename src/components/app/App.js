@@ -1,6 +1,6 @@
 import React, { Component } from "react";
 import { BrowserRouter } from "react-router-dom";
-import MyApp from "./MyApp";
+import MyApp from "../my-app/MyApp";
 import "./App.css";
 
 class App extends Component {
