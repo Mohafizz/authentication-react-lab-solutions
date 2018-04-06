@@ -12,7 +12,6 @@ class AuthenticationForm extends Component {
   }
 
   render() {
-    console.log(this.props);
     return (
       <div className="authentication-form">
         <h2>{this.props.title}</h2>
@@ -76,8 +75,7 @@ class AuthenticationForm extends Component {
     )
       .then(data => data.json())
       .then(data => {
-        sessionStorage.accessToken = data.user.token;
-        console.log(this.props.history);
+        sessionStorage.setItem("token", data.user.token);
         this.props.history.push("/");
       })
       .catch(err => console.log(err));

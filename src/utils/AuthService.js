@@ -1,1 +1,1 @@
-export const isAuthenticated = () => sessionStorage.accessToken !== undefined;
+export const isAuthenticated = () => sessionStorage.getItem("token") !== null;
