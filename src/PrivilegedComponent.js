@@ -11,7 +11,6 @@ class PrivilegedComponent extends Component {
   }
 
   render() {
-    console.log(this.state.data);
     return (
       <div className="privileged-content-body">
         <h2>Privileged Content</h2>
